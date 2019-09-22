@@ -1,0 +1,77 @@
+{
+    "dataRoles": [
+        {
+            "displayNameKey": "Roles_Sampling",
+            "descriptionKey": "Roles_Sampling_Description",
+            "displayName": "Sampling",
+            "name": "sampling",
+            "kind": "Grouping",
+            "description": "Sampling description."
+        },
+        {
+            "displayNameKey": "Roles_Measure",
+            "descriptionKey": "Roles_Measure_Description",
+            "displayName": "Measure Data",
+            "name": "measure",
+            "kind": "Measure",
+            "description": "Measure description.",
+            "requiredTypes": [
+                {
+                    "numeric": true
+                }
+            ]
+        },
+        {
+            "displayNameKey": "Roles_Category",
+            "descriptionKey": "Roles_Category_Description",
+            "displayName": "Category",
+            "name": "category",
+            "kind": "Grouping",
+            "description": "Category description."
+        }
+    ],
+    "objects": {},
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "category": {
+                        "max": 1
+                    },
+                    "sampling": {
+                        "max": 1
+                    },
+                    "measure": {
+                        "max": 1
+                    }
+                }
+            ],
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "category"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "sampling"
+                            }
+                        },
+                            {
+                            "bind": {
+                                "to": "measure"
+                            }
+                        }
+                    ],
+                    "dataReductionAlgorithm": {
+                        "window": {
+                            "count": 30000
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
