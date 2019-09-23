@@ -54,6 +54,7 @@
             console.log('Visual constructor', options);
             this.target = options.element;
             this.updateCount = 0;
+            this.windowsLoaded = 0;
             this.host = options.host;
             if (typeof document !== 'undefined') {
                 const new_p: HTMLElement = document.createElement('p');
@@ -74,14 +75,14 @@
             console.log('Update kind', options.operationKind);
             if (options.operationKind === VisualDataChangeOperationKind.Create) {
                 this.windowsLoaded = 1;
-            } else {
-                this.windowsLoaded++;
+            } 
+            if (options.operationKind === VisualDataChangeOperationKind.Append) {
+                this.windowsLoaded += 1;
             }
 
             let rowCount = options.dataViews[0].table.rows.length;
 
-            if (        options.dataViews[0].metadata.segment
-            ) {
+            if (options.dataViews[0].metadata.segment) {
                 this.textNode.textContent = `Loading more data. ${rowCount} rows loaded so far (over ${this.windowsLoaded} fetches)...`;
                 let canFetchMore = this.host.fetchMoreData();
                 if (!canFetchMore) {

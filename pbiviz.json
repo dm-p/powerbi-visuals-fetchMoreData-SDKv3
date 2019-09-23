@@ -1,8 +1,8 @@
 {
     "visual": {
-        "name": "testFetchMore",
-        "displayName": "testFetchMore",
-        "guid": "testFetchMoreBD638B5AF4C64AEC8566B98C6C5AA9FA",
+        "name": "testFetchMoreSDKv3",
+        "displayName": "testFetchMoreSDKv3",
+        "guid": "testFetchMoreSDKv3BD638B5AF4C64AEC8566B98C6C5AA9FA",
         "visualClassName": "Visual",
         "version": "1.0.0",
         "description": "Fetch More Data (Bare-Bones Test)",
